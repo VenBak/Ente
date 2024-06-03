@@ -1,24 +1,53 @@
 import React, {useState, useEffect} from 'react';
 
 import logo from '../assets/duck.gif';
-import staticlogo from '../assets/duck_static.png'
+import staticlogo from '../assets/duck_static.png';
+import {Button} from 'react-bootstrap';
+import Auth from '../utils/auth';
 
 const Header = () => {
     const [currentImage, setCurrentImage] = useState(staticlogo);
 
-    const handleClick = () => {
+    const handleClick = async () => {
         setCurrentImage(logo);
-        setTimeout(() => {
-            setCurrentImage(staticlogo);
-        }, 2000);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setCurrentImage(staticlogo);
+        window.location.assign("/");
+    };
+
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+        window.location.assign('/');
+    };
+
+    const routechangerules = () => {
+        window.location.assign("/rules")
+    };
+    const routechangelogin = () => {
+        window.location.assign("/login")
+    };
+    const routechangesignup = () => {
+        window.location.assign("/signup")
     };
 
     return (
+    
+        
     <header className="App-header">
-        <img src={currentImage} alt="Duck" onClick={handleClick}/>
-        {/* <button>
-            Login
-        </button>    */}
+        <img src={currentImage} alt="Duck" onClick={handleClick} className="logo"/>
+        <div>Ente</div>
+        <div className='button-group'>
+                <Button className="d-flex justify-content-center align-items-center" onClick={routechangerules}>
+                    Rules
+                </Button>
+                <Button onClick={routechangelogin}>
+                    Login
+                </Button>
+                <Button onClick={routechangesignup}>
+                    Signup
+                </Button>
+        </div>
     </header>
     );
 };
