@@ -16,6 +16,9 @@ import Rules from './pages/Rules'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Create from './pages/Create'
+import Lobby from './pages/Lobby'
+import Join from './pages/Join'
 
 const httpLink = createHttpLink({
   uri: 'graphql',
@@ -61,6 +64,18 @@ function App() {
         <Route
           path="/rules"
           element={<Rules />}
+        />
+        <Route
+          path="/create"
+          element={<Create />}
+        />
+        <Route
+          path="/lobby"
+          element={<Lobby />}
+        />
+        <Route
+          path="/join"
+          element={<Join />}
         />
         </Routes>
       </Router>

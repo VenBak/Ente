@@ -3,12 +3,18 @@ import bootstrap from 'bootstrap'
 import { Button } from 'react-bootstrap';
 
 function Rules () {
+    const routechangesjoin = () => {
+        window.location.assign("/join")
+    };
+    const routechangescreate = () => {
+        window.location.assign("/create")
+    };
     return (
         <div className="d-flex justify-content-center align-items-center main-section">
             <div className="home-container">
-                <Button>Play</Button>
                 <Button>Rules</Button>
-                <Button>Join Game</Button>
+                <Button onClick={routechangesjoin}>Join Game</Button>
+                <Button onClick={routechangescreate}>Create Game</Button>
             </div>
         </div>
 
