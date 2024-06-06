@@ -11,7 +11,7 @@ const [turns, setTurns] = useState([]);
   const {get, post, loading} = useFetch("https://ente-52450.bubbleapps.io/version-test/api/1.1/wf/");
 
     useEffect(() => {
-        get("get_game?gameId=R6P05A").then(data => {
+        get("get_game?gameId=7QGKUE").then(data => {
             console.log(data.response.game);            
             console.log(data.response.turns);
             setGame(data.response.game);
