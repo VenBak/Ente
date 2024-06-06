@@ -38,15 +38,29 @@ const Header = () => {
         <img src={currentImage} alt="Duck" onClick={handleClick} className="logo"/>
         <div>Ente</div>
         <div className='button-group'>
-                <Button className="d-flex justify-content-center align-items-center" onClick={routechangerules}>
+                <div>{Auth.loggedIn() ? (
+                    <div>
+                        <Button className="d-flex justify-content-center align-items-center" onClick={routechangerules}>
+                        Rules
+                        </Button>
+                        <Button className="d-flex justify-content-center align-items-center" onClick={logout}>
+                        Logout
+                        </Button>
+                    </div>
+                ): (
+                <div>  
+                    <Button className="d-flex justify-content-center align-items-center" onClick={routechangerules}>
                     Rules
-                </Button>
-                <Button onClick={routechangelogin}>
-                    Login
-                </Button>
-                <Button onClick={routechangesignup}>
-                    Signup
-                </Button>
+                    </Button>
+                    <Button onClick={routechangelogin}>
+                        Login
+                    </Button>
+                    <Button onClick={routechangesignup}>
+                        Signup
+                    </Button>
+                </div>
+                )}
+                </div>
         </div>
     </header>
     );

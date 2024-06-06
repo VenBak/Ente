@@ -1,102 +1,98 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
+import { LOGIN_PROFILE } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
-//   const [formState, setFormState] = useState({ email: '', password: '' });
-//   const [login, { error, data }] = useMutation(LOGIN_USER);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-//   const [handleShow, setHandleShow] = useState(true);
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);
+    };
 
-//   const handleClose = () => { 
-//     setHandleShow(false);
-//     window.location.assign('/');
-//   }
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
+  const [addProfile, { error, data }] = useMutation(LOGIN_PROFILE);
 
-//   // update state based on form input changes
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
+  // update state based on form input changes
 
-//     setFormState({
-//       ...formState,
-//       [name]: value,
-//     });
-//   };
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+    const profile = {
+        username: username,
+        password: password,
+    };
+    console.log(profile)
 
-//   // submit form
-//   const handleFormSubmit = async (event) => {
-//     event.preventDefault();
-//     console.log(formState);
-//     try {
-//       const { data } = await login({
-//         variables: { ...formState },
-//       });
-//       Auth.login(data.login.token);
-//       window.location.assign('/home');
-//     } catch (e) {
-//       console.error(e);
-//     }
+    const { data } = await addProfile({
+        variables: { username, password },
+    });
 
-//     // clear form values
-//     setFormState({
-//       email: '',
-//       password: '',
-//     });
-//   };
+      Auth.login(data.login.token);
 
-//   return (
-//     <>
-//       <Modal show={handleShow} onHide={handleClose}
-//         aria-labelledby="contained-modal-title-vcenter"
-//         centered>
-//         <Modal.Header>
-//           <Modal.Title id="contained-modal-title-vcenter">Login</Modal.Title>
-//         </Modal.Header>
-//         <Modal.Body>
-//           <Form> 
-//             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-//               <Form.Label>Email address</Form.Label>
-//               <Form.Control
-//                 type='text'
-//                 name="email"
-//                 onChange={handleChange}
-//                 autoFocus
-//                 value={formState.email}
-//               />
-//             </Form.Group>
-//             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-//               <Form.Label>Password</Form.Label>
-//               <Form.Control
-//                 type='password'
-//                 placeholder="*******"
-//                 name="password"
-//                 value={formState.password}
-//                 onChange={handleChange}
-//               />
-//             </Form.Group>
-//           </Form>
-//         </Modal.Body>
-//         <Modal.Footer>
-//           <Button variant="secondary" onClick={handleClose}>
-//             Close
-//           </Button>
-//           <Button variant="primary" onClick={handleFormSubmit}>
-//             Submit
-//           </Button>
-//         </Modal.Footer>
-//       </Modal>
-//     </>
-  //);
-  return (
-    <div>Login</div>
-  )
-}
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+return (
+    <main className="flex-row justify-center mb-4">
+      <div className="col-12 col-lg-10">
+        <div className="card">
+          <h4 className="card-header bg-dark text-light p-2">Log in</h4>
+          <div className="card-body">
+            {data ? (
+              <p>
+                You are now logged in{' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
+              <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Your username"
+                  name="username"
+                  type="text"
+                  value={username}
+                  onChange={handleUsernameChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+                <button
+                  className="btn btn-block btn-info"
+                  style={{ cursor: 'pointer' }}
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </form>
+            )}
+
+            {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+};
 
 export default Login;
+
 
 
 

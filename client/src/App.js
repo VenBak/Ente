@@ -18,7 +18,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -35,7 +35,7 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: authLink.concat(httpLink),
+  link:  authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

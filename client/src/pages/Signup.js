@@ -24,15 +24,19 @@ const Signup = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log()
     try {
     const profile = {
         username: username,
         password: password,
     };
-      const { data } = await addProfile(profile);
+    console.log(profile)
+
+    const { data } = await addProfile({
+        variables: { username, password },
+    });
 
       Auth.login(data.addProfile.token);
+
     } catch (e) {
       console.error(e);
     }
