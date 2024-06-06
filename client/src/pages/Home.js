@@ -8,7 +8,7 @@ function Rules () {
             <div className="home-container">
                 <Button>Play</Button>
                 <Button>Rules</Button>
-                <Button>Join Game</Button>
+                <Button onClick={routechangeGame}>Join Game</Button>
             </div>
         </div>
 
