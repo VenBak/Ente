@@ -18,6 +18,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Game from './pages/Game'
 
+
 const httpLink = createHttpLink({
   uri: 'graphql',
 });
@@ -63,8 +64,8 @@ function App() {
           path="/rules"
           element={<Rules />}
         />
-      <Route
-          path="/game"
+       <Route
+          path="/game/:gameId"
           element={<Game />}
         />
         </Routes>
