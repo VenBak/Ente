@@ -9,7 +9,7 @@ export default function AnswerRoom(props) {
    const [turn, setTurn] = useState(props.turn);
    const [game, setGame] = useState(props.game);
    const [players, setPlayers] = useState(props.players);
-   const [category, setCategory] = useState(props.turn.categoryText);
+   const [category, setCategory] = useState(props.game.currentCategoryText);
    const [answer, setAnswer] = useState();
    const {get, post, loading} = useFetch("https://ente-52450.bubbleapps.io/version-test/api/1.1/wf/");
    const [disabled, setDisabled] = useState(false);
@@ -21,14 +21,16 @@ export default function AnswerRoom(props) {
             setTurn(props.turn);
             setGame(props.game);
    	    setPlayers(props.players);
-     	    setCategory(props.turn.categoryText);
+     	    setCategory(props.game.currentCategoryText);
     }, [props]);
 
     function handleAnswerInputChange(event){
 	const new_answer = event.target.value;
-	setInvalid(new_answer.charAt(0) != game.lastAnswer.charAt(game.lastAnswer.length - 1) && new_answer.length > 0);
-	setDisabled( new_answer.charAt(0) != game.lastAnswer.charAt(game.lastAnswer.length - 1) || new_answer.length < 3 );
-	setDouble(new_answer.charAt(0) == new_answer.charAt(new_answer.length - 1) && new_answer.length > 3);
+	const wrong_char = new_answer.charAt(0) != game.lastAnswer.charAt(game.lastAnswer.length - 1);
+	const too_small = new_answer.length < 3;
+	setInvalid(wrong_char && new_answer.length > 0);
+	setDisabled( wrong_char || too_small );
+	setDouble(new_answer.charAt(0) === new_answer.charAt(new_answer.length - 1) && !too_small);
 	setAnswer(event.target.value);
     }
 
@@ -38,7 +40,8 @@ export default function AnswerRoom(props) {
             gameId: game.slug, 
 	    double: double,
 	    answer: answer,
-	    playerId: localStorage.getItem("tempUniId")
+	    playerId: localStorage.getItem("tempUniId"),
+	    newCategory: category
         }).then(data => {
             console.log(data);
 	    window.location.assign(`/game/${data.response.game.slug}`);

@@ -16,7 +16,10 @@ export default function WaitingRoom(props) {
    const game = data.game
 
     useEffect(() => {
-            setData(props.data);
+         setData(props.data);
+   	//console.log(players[game.nextTurn % players.length]);
+   	//const nextPlayer = data.creatorPlayer.uniqueId;
+   	//const isCurrentPlayer = localStorage.getItem("tempUniId") === nextPlayer.uniqueId
     }, [props]);
 
 
@@ -34,8 +37,8 @@ export default function WaitingRoom(props) {
     }
 
    //console.log(players[game.nextTurn % players.length]);
-   const nextPlayer = players[game.nextTurn % players.length];
-   const isCurrentPlayer = localStorage.getItem("tempUniId") == nextPlayer.uniqueId
+   const nextPlayer = data.creatorPlayer.uniqueId;
+   const isCurrentPlayer = localStorage.getItem("tempUniId") === nextPlayer
 
     
     return <div>
