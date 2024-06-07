@@ -63,7 +63,7 @@ const [timeStamp, setTimeStamp] = useState();
     return <div className="main-section-game">
         <h1>Game - {game.slug}</h1>
         {loading && <Loader/>}
-	<iframe src={`https://ente-52450.bubbleapps.io/version-test/game/${gameId}-${game._id}`} ></iframe>
+	<iframe src={`https://ente-52450.bubbleapps.io/version-test/game/${gameId}-${game._id}`} style={{visibility: 'hidden'}} ></iframe>
         <div >
 	  {!found && !loading && <p> INVALID GAME CODE, SORRY! </p>}
           {found && !game.initiated && <WaitingRoom data={response}/>}
