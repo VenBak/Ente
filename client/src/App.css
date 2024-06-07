@@ -55,11 +55,37 @@
 }
 
 
-.history-item > * {
-  margin-right: 10px;
+.history {
+  display:grid;
+  grid-template-rows:auto; 
+  border-top: 1px solid #000001;
+  border-bottom: 1px solid #000001;
 }
 
 
+.history-item > * {
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  padding: 5px 20px
+}
+
+input:invalid {
+  background-color: ivory;
+  border: none;
+  outline: 2px solid red;
+  border-radius: 5px;
+}
+
+.avtar-small{
+  max-height:50px;
+}
+
+.red-text{
+ color: red;
+}
+
+.green-text{
+ color: green;
+}
 
 .App-link {
   color: #61dafb;

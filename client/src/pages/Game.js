@@ -35,14 +35,14 @@ const [response, setResponse] = useState({});
     return <div>
         <h1>Game - {game.slug}</h1>
         {loading && <Loader/>}
-        <div>
+        <div >
 	  {!found && !loading && <p> INVALID GAME CODE, SORRY! </p>}
           {found && !game.initiated && <WaitingRoom data={response}/>}
           {
 		found && game.initiated && turns && 
-		<div className="flex-col">
+		<div>
 			<AnswerRoom turn={turns[0]} game={game} players={response.players}/>
-			<History turns={turns}/>
+			<History turns={turns} players={response.players}/>
 		</div>
 	  }
         </div>

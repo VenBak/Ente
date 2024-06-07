@@ -9,7 +9,7 @@ import Game from './Game'
 
 function Rules () {
 
-    const [userId, setUserId] = useState("");
+    const [userId, setUserId] = useState(localStorage.getItem("tempUniId"));
     const [gameId, setGameId] = useState("");
     const [userDisplay, setUserDisplay] = useState("");
 

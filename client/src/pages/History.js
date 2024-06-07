@@ -13,6 +13,10 @@ export default function History(props) {
     
     return <div className="flex-col">
 	<p> History </p>
-     	{turns && turns.map(item => <HistoryItem key={item._id} item={item}/ >)}
+     	<div className="history">
+		{
+			turns && turns.map(item => <HistoryItem key={item._id} item={item} players={props.players}/ >)
+		}
+	</div>
     </div>
 }

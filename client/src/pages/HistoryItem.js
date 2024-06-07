@@ -7,12 +7,18 @@ export default function HistoryItem(props) {
 
     useEffect(() => {
             setTurn(props.item);
-    }, []);
+    }, [props.turn]);
     
-    return (<div className = 'flex-row justify-flex-start history-item'>
-               <p>{turn.order}</p>
-               <p>{turn.answer}</p>
-               <p>{turn.categoryText}</p>
-               <p>{turn.playerReferenceText}</p>
+    
+    const player =  props.players && props.players.filter(item => item._id == turn.playerReference)[0];
+    const player_image =  props.players && props.players.filter(item => item._id == turn.playerReference)[0];
+
+    return (<div className = "flex-row  history-item">
+	 	<img className="avtar-small" src={player.tempAvtar} alt="Avtar" />
+           	<p>{turn.order}</p>
+               	<p>{turn.answer}</p>
+               	<p>{turn.categoryText}</p>
+               	<p>{turn.playerReferenceText}</p>
+               	<p>{turn.double ? "2P" : "1P"}</p>
             </div>)
 }
