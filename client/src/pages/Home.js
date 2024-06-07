@@ -17,7 +17,7 @@ function Rules () {
 
 
     useEffect(() => {
-            setUserId("");
+            setUserId(localStorage.getItem("tempUniId"));
     }, []);
 
 
@@ -31,11 +31,11 @@ function Rules () {
             newPlayerId: tempUniId, 
 	    newPlayerDisplayName: userDisplay
         }).then(data => {
+            console.log("Success add player");
             console.log(data);
 	    window.location.assign(`/game/${data.response.game.slug}`);
-        }).catch(error => console.error(error));
-
-        window.location.assign(`/game/${gameId}`)
+        }).catch(error => {console.error("ERRORRR"+ error)});
+        
    };
 
 
