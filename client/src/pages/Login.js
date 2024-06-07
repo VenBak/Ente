@@ -70,7 +70,7 @@ return (
                   onChange={handlePasswordChange}
                 />
                 <button
-                  className="btn btn-block btn-info"
+                  className="btn btn-block btn-login"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >

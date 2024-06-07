@@ -1035,8 +1035,16 @@ a:hover {
 }
 
 .btn.btn-info {
-  background-color: #1bbc9b;
+  background-color: #f5ebe0;
   color: #ffffff;
+}
+
+.btn.btn-signup {
+  background-color: #ce2a2a;
+}
+
+.btn.btn-login {
+  background-color: #ce2a2a;
 }
 
 .btn.btn-info:hover {
@@ -1715,6 +1723,7 @@ label form [type='radio'] {
 .input-name-create {
   border-radius: 15px;
   padding: 5px;
+  height: 52px;
 }
 
 .input-name-join {
