@@ -39,7 +39,7 @@ export default function AnswerRoom(props) {
     const isCurrentPlayer = localStorage.getItem("tempUniId") == nextPlayer.uniqueId
     
     return <div className="flex-col">
-	  <p> {localStorage.getItem("tempUniId")} is Answering </p>
+	  <p> {isCurrentPlayer ? "You are" : nextPlayer.uniqueId+ " is"} Answering </p>
 
 	{ isCurrentPlayer &&
 		<div className="flex-col">

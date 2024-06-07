@@ -33,6 +33,10 @@ export default function WaitingRoom(props) {
         }).catch(error => console.error(error));
     }
 
+   //console.log(players[game.nextTurn % players.length]);
+   const nextPlayer = players[game.nextTurn % players.length];
+   const isCurrentPlayer = localStorage.getItem("tempUniId") == nextPlayer.uniqueId
+
     
     return <div>
 	  <p> You are Waiting </p>
@@ -42,8 +46,12 @@ export default function WaitingRoom(props) {
 	  	<p> Players: </p>
           	{players && players.map(item => <PlayerItem key={item._id} item={item}/ >)}
 	     </div>
+
 		<div className="flex-col">
 			<p> Creator of Game will start the game soon! </p>   
+
+	{ isCurrentPlayer &&
+		<div className="flex-row">
 		   	<input 
 				type="text"
       				id="category"
@@ -62,7 +70,8 @@ export default function WaitingRoom(props) {
 		    	/>
                    	<Button onClick={handleStartGame}>Start Game</Button>
 		</div>
-
+	}
+		</div>
 	  </div>
     </div>
 }
