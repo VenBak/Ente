@@ -7,6 +7,10 @@
   pointer-events: none;
 }
 
+body {
+  background-color: #f5ebe0;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -33,7 +37,6 @@
   display: flex;
   gap: 10px; /* Optional, to add some space between buttons */
   margin: 10px;
-  padding-right: 10px;
 }
 
 .home-container {
@@ -54,38 +57,35 @@
   background-color: #f5ebe0;
 }
 
+.main-section-rules h1 {
+  text-align: center;
+  margin-top: 0;
+}
 
-.history {
-  display:grid;
-  grid-template-rows:auto; 
-  border-top: 1px solid #000001;
-  border-bottom: 1px solid #000001;
+.main-section-rules p {
+  column-count: 1; /* Creates a two-column newspaper layout */
+  column-gap: 20px; /* Adjust the gap between columns */
+  text-align: justify; /* Justifies the text */
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.main-section-rules {
+  background-color: #f5ebe0;
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
+
+.main-section-game {
+  text-align: center;
 }
 
 
-.history-item > * {
-  grid-template-columns:1fr 1fr 1fr 1fr;
-  padding: 5px 20px
-}
-
-input:invalid {
-  background-color: ivory;
-  border: none;
-  outline: 2px solid red;
-  border-radius: 5px;
-}
-
-.avtar-small{
-  max-height:50px;
-}
-
-.red-text{
- color: red;
-}
-
-.green-text{
- color: green;
-}
 
 .App-link {
   color: #61dafb;

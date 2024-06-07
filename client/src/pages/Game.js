@@ -32,7 +32,7 @@ const [response, setResponse] = useState({});
     }, []);
 
 
-    return <div>
+    return <div className="main-section-game">
         <h1>Game - {game.slug}</h1>
         {loading && <Loader/>}
         <div >
