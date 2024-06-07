@@ -39,17 +39,17 @@ const Header = () => {
         <div>Ente</div>
         <div className='button-group'>
                 <div>{Auth.loggedIn() ? (
-                    <div>
-                        <Button className="d-flex justify-content-center align-items-center" onClick={routechangerules}>
+                    <div className='button-layout'>
+                        <Button className="nav-button d-flex justify-content-center align-items-center" onClick={routechangerules}>
                         Rules
                         </Button>
-                        <Button className="d-flex justify-content-center align-items-center" onClick={logout}>
+                        <Button className="nav-button d-flex justify-content-center align-items-center" onClick={logout}>
                         Logout
                         </Button>
                     </div>
                 ): (
-                <div>  
-                    <Button className="d-flex justify-content-center align-items-center" onClick={routechangerules}>
+                <div className='button-layout'>  
+                    <Button className="nav-button d-flex justify-content-center align-items-center" onClick={routechangerules}>
                     Rules
                     </Button>
                     <Button onClick={routechangelogin}>
