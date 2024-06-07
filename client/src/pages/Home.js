@@ -60,24 +60,26 @@ function Rules () {
         <div className="d-flex justify-content-center align-items-center main-section">
       
             <div className="home-container">
-		<div>
+		<div className="field">
 		   <input 
 			type="text"
       			id="userDisplay1"
       			name="userDisplay1"
 			placeholder="Your display name"
       			value={userDisplay}
+                className="input-name-create"
       			onChange={(event) => setUserDisplay(event.target.value)}
 		    />
                    <Button onClick={handleNewGame}>New Game</Button>
 		</div>
                 {/*<Button>Rules</Button>*/}
-		<div className="flex-row">
+		<div className="flex-row field" >
 		   <input 
 			type="text"
       			id="gameId"
       			name="gameId"
-			placeholder="Type Game Code"
+                className="input-game-code"
+			    placeholder="Type Game Code"
       			value={gameId}
       			onChange={(event) => setGameId(event.target.value)}
 		    />
@@ -85,6 +87,7 @@ function Rules () {
 			type="text"
       			id="userDisplay2"
       			name="userDisplay2"
+                className="input-name-join"
 			placeholder="Your display name"
       			value={userDisplay}
       			onChange={(event) => setUserDisplay(event.target.value)}
