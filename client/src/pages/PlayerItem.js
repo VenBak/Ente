@@ -9,7 +9,11 @@ export default function PlayerItem(props) {
             setPlayer(props.item);
     }, []);
     
-    return (<div className = 'flex-row justify-flex-start history-item'>
+    return (
+	<div className = 'flex-row justify-flex-start history-item'>
                <p>{player.displayName}</p>
-            </div>)
+               <p> : </p>
+               <p>{player.uniqueId}</p>
+            </div>
+	)
 }

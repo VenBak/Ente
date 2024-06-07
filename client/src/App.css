@@ -55,6 +55,10 @@
 }
 
 
+.history-item > * {
+  margin-right: 10px;
+}
+
 
 
 .App-link {

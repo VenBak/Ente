@@ -3,6 +3,7 @@ import useFetch from "./useFetch.js";
 import Loader from "../components/Loader.js";
 import History from "./History.js";
 import WaitingRoom from "./WaitingRoom.js";
+import AnswerRoom from "./AnswerRoom.js";
 import { useParams } from 'react-router-dom';
 
 
@@ -37,7 +38,13 @@ const [response, setResponse] = useState({});
         <div>
 	  {!found && !loading && <p> INVALID GAME CODE, SORRY! </p>}
           {found && !game.initiated && <WaitingRoom data={response}/>}
-          {found && turns && <History turns={turns}/>}
+          {
+		found && game.initiated && turns && 
+		<div className="flex-col">
+			<AnswerRoom turn={turns[0]} game={game} players={response.players}/>
+			<History turns={turns}/>
+		</div>
+	  }
         </div>
     </div>
 }

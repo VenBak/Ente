@@ -23,9 +23,12 @@ function Rules () {
 
    const handleJoinGame = (event) => {
         event.preventDefault();
+	const tempUniId = "" + userDisplay  + "-" + Date.now();
+	localStorage.setItem("tempUniId", tempUniId);
+
         post("add_player", {
             gameId: gameId,
-            newPlayerId: "testapicall" + Date.now(), 
+            newPlayerId: tempUniId, 
 	    newPlayerDisplayName: userDisplay
         }).then(data => {
             console.log(data);
@@ -38,8 +41,11 @@ function Rules () {
 
     function handleNewGame (event) {
         event.preventDefault();
+	const tempUniId = "" + userDisplay  + "-" + Date.now();
+	localStorage.setItem("tempUniId", tempUniId);
+
         post("create_game", {
-            creator: "testapicall" + Date.now(), 
+            creator: tempUniId, 
 	    userName: userDisplay
         }).then(data => {
             console.log(data);

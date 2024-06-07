@@ -13,5 +13,6 @@ export default function HistoryItem(props) {
                <p>{turn.order}</p>
                <p>{turn.answer}</p>
                <p>{turn.categoryText}</p>
+               <p>{turn.playerReferenceText}</p>
             </div>)
 }
