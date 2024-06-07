@@ -36,7 +36,7 @@ const Header = () => {
         
     <header className="App-header">
         <img src={currentImage} alt="Duck" onClick={handleClick} className="logo"/>
-        <div>Ente</div>
+        <div id='logo-name'>Ente</div>
         <div className='button-group'>
                 <div>{Auth.loggedIn() ? (
                     <div className='button-layout'>
