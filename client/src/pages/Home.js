@@ -60,37 +60,47 @@ function Rules () {
         <div className="d-flex justify-content-center align-items-center main-section">
       
             <div className="home-container">
-		<div>
-		   <input 
-			type="text"
-      			id="userDisplay1"
-      			name="userDisplay1"
-			placeholder="Your display name"
-      			value={userDisplay}
-      			onChange={(event) => setUserDisplay(event.target.value)}
-		    />
-                   <Button onClick={handleNewGame}>New Game</Button>
-		</div>
-                {/*<Button>Rules</Button>*/}
-		<div className="flex-row">
-		   <input 
-			type="text"
-      			id="gameId"
-      			name="gameId"
-			placeholder="Type Game Code"
-      			value={gameId}
-      			onChange={(event) => setGameId(event.target.value)}
-		    />
-		   <input 
-			type="text"
-      			id="userDisplay2"
-      			name="userDisplay2"
-			placeholder="Your display name"
-      			value={userDisplay}
-      			onChange={(event) => setUserDisplay(event.target.value)}
-		    />
-                   <Button onClick={handleJoinGame}>Join Game</Button>
-		</div>
+            <div className="field">
+                    <div className="home-explain">Create your own game!</div>
+                <input 
+                    type="text"
+                        id="userDisplay1"
+                        name="userDisplay1"
+                    placeholder="Your display name"
+                        value={userDisplay}
+                        className="input-name-create"
+                        onChange={(event) => setUserDisplay(event.target.value)}
+                    />
+                        <Button onClick={handleNewGame} style={{ height: '52px' }}>New Game</Button>
+                </div>
+                        {/*<Button>Rules</Button>*/}
+                <div className="field" >
+                    <div 
+                        className="home-explain">
+                        Join your friend's game!
+                    </div>
+                    <div className="flex-row">
+                            <input 
+                            type="text"
+                                id="gameId"
+                                name="gameId"
+                                className="input-game-code"
+                                placeholder="Type Game Code"
+                                value={gameId}
+                                onChange={(event) => setGameId(event.target.value)}
+                            />
+                            <input 
+                                type="text"
+                                id="userDisplay2"
+                                name="userDisplay2"
+                                className="input-name-join"
+                                placeholder="Your display name"
+                                value={userDisplay}
+                                onChange={(event) => setUserDisplay(event.target.value)}
+                            />
+                            <Button onClick={handleJoinGame} style={{ height: '72px' }}>Join Game</Button>
+                    </div>
+                </div>
             </div>
         </div>
 

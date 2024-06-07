@@ -72,7 +72,7 @@ const Signup = () => {
                   onChange={handlePasswordChange}
                 />
                 <button
-                  className="btn btn-block btn-info"
+                  className="btn btn-block btn-signup"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
